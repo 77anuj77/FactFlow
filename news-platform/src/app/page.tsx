@@ -1,4 +1,4 @@
- "use client";
+"use client";
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -33,89 +33,90 @@ export default function Home() {
   const featured = articles[0];
   const latest = featured ? articles.slice(1) : articles;
 
+
+
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between gap-2">
-        <h1 className="text-2xl font-semibold tracking-tight">
-          Latest headlines
+    <div className="mx-auto w-full px-4 sm:px-6 lg:px-8 py-8">
+      <div className="mb-6 flex items-center justify-between gap-2">
+        <h1 className="text-xl font-bold tracking-tight text-white">
+          Latest News
         </h1>
         <button
           type="button"
           onClick={fetchArticles}
           disabled={loading}
-          className="inline-flex items-center gap-1 rounded-full border border-zinc-200 bg-white px-3 py-1 text-xs font-medium text-zinc-700 shadow-sm transition hover:bg-zinc-50 disabled:cursor-not-allowed disabled:opacity-60"
+          className="inline-flex items-center gap-1 rounded-full bg-zinc-800 hover:bg-zinc-700 px-4 py-2 text-sm font-medium text-white transition disabled:cursor-not-allowed disabled:opacity-60"
         >
           ⟳ {loading ? "Refreshing..." : "Refresh"}
         </button>
       </div>
 
       {error && (
-        <p className="text-sm text-red-600" role="alert">
-          {error}
-        </p>
+        <div className="rounded-lg bg-red-900/30 border border-red-500/50 p-4 mb-6">
+          <p className="text-sm font-medium text-red-400" role="alert">
+            {error}
+          </p>
+        </div>
       )}
 
       {!loading && articles.length === 0 && !error && (
-        <p className="text-sm text-zinc-600">
-          No articles yet. Once you create some, they will appear here.
-        </p>
+        <div className="flex flex-col items-center justify-center rounded-xl border border-dashed border-zinc-700 bg-zinc-800/50 py-24 text-center">
+          <p className="text-zinc-400 font-medium">
+            No Indian Express articles loaded.
+          </p>
+        </div>
       )}
 
-      {featured && (
-        <Link
-          href={`/article/${featured.id}`}
-          className="grid gap-4 rounded-2xl bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md md:grid-cols-3"
-        >
-          <div className="md:col-span-2">
-            <p className="text-xs font-medium uppercase tracking-wide text-amber-600">
-              Featured
-            </p>
-            <h2 className="mt-1 text-xl font-semibold leading-tight">
-              {featured.title}
-            </h2>
-            <p className="mt-2 line-clamp-3 text-sm text-zinc-600">
-              {featured.content}
-            </p>
-            <p className="mt-3 text-xs text-zinc-500">
-              {featured.category?.name} •{" "}
-              {new Date(featured.created_at).toLocaleDateString()}
-            </p>
-          </div>
-          <div className="hidden h-32 rounded-xl bg-zinc-100 md:block" />
-        </Link>
-      )}
+      {articles.length > 0 && (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-10">
+          {articles.map((article: any) => (
+            <Link
+              key={article.id}
+              href={article.id.startsWith('mock') || article.id.startsWith('indian-express') ? '#' : `/article/${article.id}`}
+              className="group flex flex-col gap-3"
+            >
+              {/* YouTube style thumbnail: 16:9, rounded, full width */}
+              <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-zinc-800">
+                <img
+                  src={article.image_url || "https://images.unsplash.com/photo-1495020689067-958852a7765e?w=800&q=80"}
+                  alt={article.title}
+                  className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+                />
+              </div>
 
-      {latest.length > 0 && (
-        <section className="space-y-3">
-          <h3 className="text-sm font-semibold uppercase tracking-wide text-zinc-700">
-            Latest
-          </h3>
-          <div className="grid gap-4 md:grid-cols-3">
-            {latest.map((article) => (
-              <Link
-                key={article.id}
-                href={`/article/${article.id}`}
-                className="flex flex-col rounded-xl bg-white p-3 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
-              >
-                <div className="h-28 rounded-lg bg-zinc-100" />
-                <div className="mt-3 flex-1 space-y-1">
-                  <p className="text-xs font-medium uppercase tracking-wide text-zinc-500">
-                    {article.category?.name}
-                  </p>
-                  <h4 className="text-sm font-semibold leading-snug">
-                    {article.title}
-                  </h4>
-                  <p className="line-clamp-2 text-xs text-zinc-600">
-                    {article.content}
-                  </p>
+              {/* Video metadata area */}
+              <div className="flex gap-3 pr-4">
+                {/* Channel/Category avatar placeholder */}
+                <div className="mt-1 flex-shrink-0">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-full bg-zinc-800 text-xs font-bold text-emerald-400 uppercase border border-zinc-700">
+                    {article.category?.name?.charAt(0) || "N"}
+                  </div>
                 </div>
-                <p className="mt-2 text-[11px] text-zinc-500">
-                  {new Date(article.created_at).toLocaleDateString()}
-                </p>
-              </Link>
-            ))}
-          </div>
-        </section>
+
+                <div className="flex flex-col">
+                  {/* Title (max 2 lines) */}
+                  <h3 className="line-clamp-2 text-base font-semibold leading-tight text-zinc-100 group-hover:text-emerald-400 transition-colors">
+                    {article.title}
+                  </h3>
+
+                  {/* Metadata under title (Category name, date) */}
+                  <div className="mt-1 flex flex-col text-sm text-zinc-400">
+                    <span>{article.category?.name || "Uncategorized"}</span>
+                    <span className="flex items-center gap-1 text-[13px] text-zinc-500">
+                      {new Date(article.created_at).toLocaleDateString(undefined, {
+                        month: "short",
+                        day: "numeric",
+                        year: "numeric"
+                      })}
+                      {" • "}
+                      {article.content ? Math.max(1, Math.ceil(article.content.length / 800)) : 1} min read
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
       )}
     </div>
   );

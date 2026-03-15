@@ -1,13 +1,24 @@
 export type CategorySlug =
-  | "sports"
+  | ""
+  | "epaper"
+  | "india"
+  | "cities"
+  | "upsc"
+  | "premium"
   | "entertainment"
+  | "politics"
+  | "sports"
+  | "world"
+  | "explained"
+  | "opinion"
+  | "business"
+  | "lifestyle"
+  | "tech"
   | "ai"
   | "technology"
   | "world-news"
-  | "politics"
-  | "business"
-  | "science";
-
+  | "science"
+  | string; // Adding generic string to support RSS ad-hoc feeds if needed
 export interface Category {
   id: string;
   name: string;

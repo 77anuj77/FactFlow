@@ -1,208 +1,156 @@
-# Agent Operating Guide
+You are a senior full-stack engineer.
+
+Help me design and implement a full stack news platform using:
+
+- Next.js (App Router)
+- TypeScript
+- Tailwind CSS
+- Supabase (database + authentication)
+- PostgreSQL
+
+First create a clear project architecture and implementation plan.
+
+PROJECT REQUIREMENTS
+
+This website is a modern news platform where users can read news articles categorized by topic.
+
+Main features:
+
+1. Authentication
+- Users can sign up
+- Users can log in
+- Users can log out
+- Authentication handled with Supabase Auth
+
+2. News Articles
+- Articles have:
+  id
+  title
+  content
+  category
+  author
+  created_at
+  image_url
+
+3. Categories
+The website should support these categories:
+
+- Sports
+- Entertainment
+- AI
+- Technology
+- World News
+- Politics
+- Business
+- Science
+
+Each category should have its own page listing related articles.
+
+4. Homepage
+Homepage should display:
+- Featured articles
+- Latest articles
+- Categories navigation
+
+5. Article Page
+Each article page should show:
+- title
+- author
+- publish date
+- article image
+- article content
+- category tag
+
+6. Admin / Editor capability
+Authenticated users should be able to:
+- create articles
+- edit articles
+- delete articles
+
+7. UI Layout
+Use a modern layout with:
+- top navigation bar
+- category menu
+- article cards
+- responsive design
+
+8. Database Schema
+
+Create Supabase tables:
+
+users
+articles
+categories
+
+articles table fields:
+id
+title
+content
+category_id
+author_id
+image_url
+created_at
+
+categories table fields:
+id
+name
+slug
+
+9. API Routes
+
+Create API routes for:
 
+- creating article
+- updating article
+- deleting article
+- fetching articles
+- fetching category articles
 
-These instructions help turn human prompts into reliable, repeatable systems.
+10. Folder Structure
 
+Use scalable folder structure such as:
 
-AI can guess. 
-This system is designed to behave.
+/app
+/components
+/lib
+/hooks
+/types
+/api
 
+11. Pages Needed
 
----
+- Home page
+- Login page
+- Signup page
+- Article page
+- Category pages
+- Create article page
+- Edit article page
+- Dashboard page
 
+12. Styling
 
-# How This Project Works
+Use Tailwind CSS and modern card based design.
 
+13. SEO
 
-There are two important files:
+Include:
+- metadata
+- dynamic routes for articles
+- clean URLs like:
 
+/article/[slug]
+/category/[name]
 
-- `instructions.md` → Defines how the system should behave.
-- `project_specs.md` → Defines what we are building.
+Now do the following:
 
+Step 1 — propose full project architecture
+Step 2 — create folder structure
+Step 3 — define database schema
+Step 4 — implement Supabase connection
+Step 5 — implement authentication
+Step 6 — implement article CRUD
+Step 7 — implement category pages
+Step 8 — build homepage layout
 
-The agent must follow both.
-
-
----
-
-
-# Step 1: Define the Project First
-
-
-Before writing any code, you must:
-
-
-1. Create a file called `project_specs.md`
-2. Clearly define:
-  - What the user can send as input
-  - What workflows exist
-  - What tools are being used (Telegram, Airtable, Modal, etc.)
-  - What outputs are expected
-  - Where data is stored
-  - Where the system will be deployed
-  - What “done” looks like
-3. Show the file
-4. Wait for approval
-
-
-No code should be written before this file is approved.
-
-
----
-
-
-# How the Agent Is Structured
-
-
-The system has three layers:
-
-
-## How this works (simple)
-
-
-- **Instructions** = what we want to happen (in `instructions/`)
-- **Decision** = pick the right workflow based on the message
-- **Actions** = the real work (Python scripts in `execution/`)
-
-
-The agent can plan, but it must execute by running the scripts in `execution/`.
-No one-off code.
-
-
----
-
-
-# File Structure
-
-
-- `instructions/` → Workflow descriptions (markdown files)
-- `execution/` → Python scripts
-- `.tmp/` → Temporary files (safe to delete)
-- `.env` → Secret keys and API tokens
-- `project_specs.md` → Full project definition
-
-
-Test data can be saved in `.tmp/` as CSV files.
-Live data should be saved to Airtable or Google Sheets.
-
-
----
-
-
-# Development Rules
-
-
-## Rule 1: Always Read First
-Always read:
-- `instructions.md`
-- `project_specs.md`
-
-
-Before taking action.
-
-
----
-
-
-## Rule 2: Python Only
-All scripts must be written in Python.
-
-
----
-
-
-## Rule 3: Every Workflow Has Two Files
-Each workflow must include:
-- A markdown file in `instructions/`
-- A matching Python file in `execution/`
-
-
-Do not run code unless both exist.
-
-
----
-
-
-## Rule 4: Build in Small Pieces
-
-
-Never build everything at once.
-
-
-Instead:
-
-
-1. Build one small part
-2. Test it locally
-3. Confirm it works
-4. Then move to the next piece
-5. Only connect parts after both work independently
-
-
----
-
-
-## Rule 5: Deployment Checklist (Modal)
-
-
-Before deploying:
-
-
-1. Test locally
-2. Make sure all secret keys are in `.env`
-3. Show the deployment command
-4. Wait for approval
-5. Deploy
-6. Test the live version
-7. Confirm it works end-to-end
-
-
----
-
-
-# When Something Breaks
-
-
-1. Fix the issue
-2. Improve the script so it doesn’t fail the same way again
-3. Test again
-4. Update instructions if needed
-
-
-Errors are feedback.
-
-
-Each fix should make the system stronger.
-
-
----
-
-
-# Response Format
-
-
-When replying, always use:
-
-
-- **Plan** (3–7 bullet points)
-- **What I need from you** (if anything)
-- **Next action** (one clear step)
-- **Errors** (explained simply)
-
-
----
-
-
-# Core Principle
-
-
-Define clearly. 
-Build in small steps. 
-Test before moving on. 
-
-
-Reliable systems are built intentionally.
-
-
-
+Explain each step briefly and generate code where needed.

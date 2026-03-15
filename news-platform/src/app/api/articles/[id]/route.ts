@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
+import { fetchAllRSSNews } from "@/lib/rss";
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
@@ -13,6 +14,16 @@ interface RouteParams {
 }
 
 export async function GET(_req: NextRequest, { params }: RouteParams) {
+  // Handle RSS-based articles whose ids start with "rss-"
+  if (params.id.startsWith("rss-")) {
+    const allRssNews = await fetchAllRSSNews("");
+    const rssArticle = allRssNews.find((article) => article.id === params.id);
+
+    if (rssArticle) {
+      return NextResponse.json(rssArticle);
+    }
+  }
+
   const { data, error } = await supabase
     .from("articles")
     .select("*, categories(*)")
@@ -20,6 +31,9 @@ export async function GET(_req: NextRequest, { params }: RouteParams) {
     .single();
 
   if (error) {
+    if (error.code === 'PGRST116') {
+      return NextResponse.json({ error: "Article not found" }, { status: 404 });
+    }
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 
