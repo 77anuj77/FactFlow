@@ -39,18 +39,21 @@ Other Tools
 
 ## 📂 Project Structure
 
+## 📂 Project Structure
+
+```text
 src/
 │
 ├── app/
 │   ├── api/
-│   │   └── articles/route.ts
-│   ├── page.tsx
+│   │   └── articles/
+│   │       └── route.ts
+│   └── page.tsx
 │
 ├── lib/
 │   └── rss.ts
 │
 └── components/
-
 ---
 
 ## ⚙️ Environment Variables
