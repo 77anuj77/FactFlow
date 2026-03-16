@@ -2,7 +2,7 @@
 
 FactFlow includes an AI-powered article summarization feature using Google Gemini.
 
-When a news article is fetched, the system can automatically generate a short summary to help users quickly understand the key information.
+When a news article is fetched, the system can generate a short summary on clicking "sumarise" button to help users quickly understand the key information.
 
 Features
 
