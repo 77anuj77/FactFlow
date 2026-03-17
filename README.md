@@ -1,7 +1,7 @@
 <p align="center">
-  <img src="FactFlow.png" alt="FactFlow Banner" width="600"/>
+  <img src="FactFlow.png" alt="FactFlow Banner" width="600"
+       style="border: 4px solid white; border-radius: 12px;" />
 </p>
-
 FactFlow includes an AI-powered article summarization feature using Google Gemini.
 
 When a news article is fetched, the system can generate a short summary on clicking "sumarise" button to help users quickly understand the key information.
