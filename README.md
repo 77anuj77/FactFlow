@@ -1,4 +1,6 @@
-# 📰 FactFlow
+<p align="center">
+  <img src="FactFlow.png" alt="FactFlow Banner" width="600"/>
+</p>
 
 FactFlow includes an AI-powered article summarization feature using Google Gemini.
 
