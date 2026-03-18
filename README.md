@@ -185,13 +185,13 @@ Create the following tables in Supabase.
 ---
 
 ## 📡 API Endpoints
-
+```
 ### Get Articles
 
 ```
 GET /api/articles
-```
 
+```
 Optional query parameters:
 
 ```
@@ -203,7 +203,7 @@ Optional query parameters:
 
 ```
 POST /api/articles
-```
+
 
 ---
 
@@ -220,31 +220,29 @@ This allows the platform to display:
 ---
 
 ## 🛠 Installation
-
+```
 Clone the repository:
-
 ```
 git clone https://github.com/YOUR_USERNAME/FactFlow.git
+
 ```
-
 Install dependencies:
-
 ```
 npm install
-```
 
+```
 Run the development server:
 
 ```
 npm run dev
-```
 
+```
 Open:
 
 ```
 http://localhost:3000
-```
 
+```
 ---
 
 ## 📦 Deployment
