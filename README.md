@@ -8,29 +8,6 @@ When a news article is fetched, the system can generate a short summary on click
 
 Features
 
-✨ Automatic article summarization
-
-⚡ Fast AI responses using Gemini API
-
-🧠 Improves readability for long articles
-
-📄 Can be extended for headline generation and tagging
-
----
-🔑 Gemini API Setup
-
-To enable AI summarization, you need a Gemini API key.
-
-Step 1 — Get API Key
-
-Go to Google AI Studio
-
-Sign in with your Google account
-
-Click Get API Key
-
-Copy your key
-
 ---
 
 ## 🤖 AI News Summarization
